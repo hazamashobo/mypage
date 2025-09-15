@@ -81,6 +81,20 @@
       text-align: center;
       margin-bottom: 1em;
     }
+    .logout-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #f5f5f5;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.logout-btn:hover {
+  color: #ff6666;
+}
   </style>
 </head>
 <body>
@@ -96,7 +110,17 @@
     </form>
     <p class="note">※ 本ページは狭間書房社員専用です。</p>
   </div>
-
+<div class="container" id="mypage-container" style="display:none;">
+  <button id="logoutBtn" class="logout-btn">×</button>
+  <div class="profile">
+    <h2 id="empName"></h2>
+    <p><strong>社員コード：</strong> <span id="empCode"></span></p>
+    <p><strong>部署：</strong> <span id="empDept"></span></p>
+    <p><strong>役職：</strong> <span id="empRole"></span></p>
+    <p><strong>入社年：</strong> <span id="empYear"></span></p>
+    <p><strong>備考：</strong> <span id="empNote"></span></p>
+  </div>
+</div>
   <div class="container" id="mypage-container" style="display:none;">
     <div class="profile">
       <h2 id="empName"></h2>
@@ -130,6 +154,14 @@
     const errorDiv = document.getElementById("error");
     const loginContainer = document.getElementById("login-container");
     const mypageContainer = document.getElementById("mypage-container");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+logoutBtn.addEventListener("click", () => {
+  mypageContainer.style.display = "none";
+  loginContainer.style.display = "block";
+  errorDiv.textContent = "";
+  loginForm.reset(); // 入力欄リセット
+});
 
     loginForm.addEventListener("submit", function(e) {
       e.preventDefault();
