@@ -176,7 +176,7 @@ logoutBtn.addEventListener("click", () => {
         document.getElementById("empDept").textContent = employee.dept;
         document.getElementById("empRole").textContent = employee.role || "―";
         document.getElementById("empYear").textContent = employee.year;
-        document.getElementById("empNote").textContent = employee.note || "―";
+        document.getElementById("empNote").innerHTML = employee.note || "―";
 
         loginContainer.style.display = "none";
         mypageContainer.style.display = "block";
