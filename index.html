@@ -4,6 +4,91 @@
   <meta charset="UTF-8">
   <title>狭間書房 | 社員マイページ</title>
   <style>
+    /* ヘッダー */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      background-color: #32a9cd;
+      color: #fff;
+    }
+    .title-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      border: none;
+    }
+    .subtitle {
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+      font-size: 1em;
+      text-align: center;
+      color: #fff;
+    }
+    /* 検索 */
+    .search {
+      display: flex;
+      align-items: center;
+    }
+    .search input {
+      padding: 4px;
+      border: 2px solid #003366;
+      border-radius: 4px;
+      width: 150px;
+      background-color: #fff;
+      color: #003366;
+    }
+    .search input::placeholder {
+      color: #003366aa;
+    }
+    .search button {
+      padding: 4px 6px;
+      margin-left: 4px;
+      border-radius: 4px;
+      border: none;
+      background-color: #003366;
+      color: #fff;
+      cursor: pointer;
+    }
+    .search button:hover {
+      background-color: #001f33;
+    }
+/* ナビゲーション */
+    nav {
+      text-align: center;
+      padding: 1em 0;
+      background-color: #f0f0f0;
+    }
+    nav a {
+      color: #003366;
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #32a9cd;
+    }
+/* コンテンツ */
+    .content {
+      max-width: 1000px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+    /* フッター */
+    footer {
+      background-color: #32a9cd;
+      color: #ffffff;
+      text-align: center;
+      padding: 1em;
+      margin-top: 3em;
+    }
     body {
       background-color: #000;
       color: #f5f5f5;
@@ -98,8 +183,26 @@
   </style>
 </head>
 <body>
+   <div class="title-wrapper">
+    <h1>狭間書房</h1>
+    <p class="subtitle">Hazama Publishing</p>
+  </div>
+  <div class="search">
+      <form action="https://hazamashobo.github.io/result/" method="get">
+        <input type="text" id="searchInput" name="q" placeholder="キーワード入力">
+        <button type="submit">検索</button>
+      </form>
+    </div>
+</header>
+
+  <nav>
+    <a href="https://hazamashobo.github.io/main/index.html">ホーム</a>
+    <a href="https://hazamashobo.github.io/company/index.html">狭間書房について</a>
+    <a href="https://hazamashobo.github.io/books/index.html">刊行物</a>
+    <a href="https://hazamashobo.github.io/contact/index.html"class="active">お問い合わせ</a>
+  </nav>
   <div class="container" id="login-container">
-    <h1>狭間書房 社員マイページ1</h1>
+    <h1>狭間書房 社員マイページ</h1>
     <form id="loginForm">
       <div class="error" id="error"></div>
       <label for="code">社員コード</label>
@@ -184,6 +287,8 @@ logoutBtn.addEventListener("click", () => {
         errorDiv.textContent = "社員コードまたは生年月日が正しくありません。";
       }
     });
+  <footer>
+    <p>© 2025 狭間書房</p></footer>
   </script>
 </body>
 </html>
