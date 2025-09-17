@@ -13,7 +13,7 @@
       display: flex;
       flex-direction: column;
     }
-    
+
     /* ヘッダー */
     header {
       display: flex;
@@ -23,12 +23,10 @@
       background-color: #32a9cd;
       color: #fff;
     }
-    
     .title-wrapper {
       display: flex;
       flex-direction: column;
     }
-    
     header h1 {
       margin: 0;
       font-size: 3em;
@@ -36,7 +34,6 @@
       line-height: 1;
       border: none;
     }
-    
     .subtitle {
       margin: 0;
       padding: 0;
@@ -45,54 +42,54 @@
       text-align: center;
       color: #fff;
     }
-    
+
     /* 検索 */
-    .search {
+    .search form {
       display: flex;
       align-items: center;
     }
     .search input {
-      padding: 4px;
+      padding: 6px 8px;
       border: 2px solid #003366;
       border-radius: 4px;
-      width: 150px;
+      width: 160px;
       background-color: #fff;
       color: #003366;
+      font-size: 0.9em;
     }
     .search input::placeholder {
       color: #003366aa;
     }
     .search button {
-      padding: 4px 6px;
-      margin-left: 4px;
+      padding: 6px 10px;
+      margin-left: 6px;
       border-radius: 4px;
       border: none;
       background-color: #003366;
       color: #fff;
       cursor: pointer;
+      font-size: 0.9em;
     }
     .search button:hover {
       background-color: #001f33;
     }
-    
+
     /* ナビゲーション */
     nav {
       text-align: center;
       padding: 1em 0;
       background-color: #f0f0f0;
     }
-    
     nav a {
       color: #003366;
       margin: 0 1em;
       text-decoration: none;
       font-weight: bold;
     }
-    
     nav a:hover {
       color: #32a9cd;
     }
-    
+
     /* コンテンツエリア */
     .main-content {
       flex: 1;
@@ -101,7 +98,7 @@
       align-items: center;
       padding: 2em 1em;
     }
-    
+
     /* フッター */
     footer {
       background-color: #32a9cd;
@@ -110,7 +107,7 @@
       padding: 1em;
       margin-top: auto;
     }
-    
+
     .container {
       background-color: #111;
       padding: 2em 3em;
@@ -120,7 +117,7 @@
       width: 100%;
       position: relative;
     }
-    
+
     h1 {
       text-align: center;
       font-size: 1.8em;
@@ -128,14 +125,14 @@
       letter-spacing: 0.2em;
       color: #fff;
     }
-    
+
     label {
       display: block;
       margin-bottom: 0.5em;
       font-size: 0.9em;
       color: #ccc;
     }
-    
+
     input {
       width: 100%;
       padding: 0.6em;
@@ -146,12 +143,12 @@
       font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
       box-sizing: border-box;
     }
-    
+
     input:focus {
       outline: none;
       border-color: #aaa;
     }
-    
+
     button {
       width: 100%;
       padding: 0.8em;
@@ -163,34 +160,29 @@
       font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
       transition: all 0.3s ease;
     }
-    
     button:hover {
       background-color: #111;
       border-color: #fff;
     }
-    
+
     .note {
       margin-top: 1em;
       font-size: 0.8em;
       color: #777;
       text-align: center;
     }
-    
     .error {
       color: #ff6666;
       text-align: center;
       margin-bottom: 1em;
     }
-    
     .profile {
       line-height: 1.8;
     }
-    
     .profile h2 {
       text-align: center;
       margin-bottom: 1em;
     }
-    
     .logout-btn {
       position: absolute;
       top: 15px;
@@ -203,7 +195,6 @@
       transition: color 0.3s;
       width: auto;
     }
-    
     .logout-btn:hover {
       color: #ff6666;
     }
@@ -211,18 +202,17 @@
 </head>
 <body>
   <header>
-   <div class="title-wrapper">
-    <h1>狭間書房1</h1>
-    <p class="subtitle">Hazama Publishing</p>
-  </div>
-    
-  <div class="search">
+    <div class="title-wrapper">
+      <h1>狭間書房</h1>
+      <p class="subtitle">Hazama Publishing</p>
+    </div>
+    <div class="search">
       <form action="https://hazamashobo.github.io/result/" method="get">
         <input type="text" id="searchInput" name="q" placeholder="キーワード入力">
         <button type="submit">検索</button>
       </form>
     </div>
-</header>
+  </header>
 
   <nav>
     <a href="https://hazamashobo.github.io/main/index.html">ホーム</a>
@@ -231,7 +221,7 @@
     <a href="https://hazamashobo.github.io/contact/index.html" class="active">お問い合わせ</a>
   </nav>
 
-  <div class="main-content">
+ <div class="main-content">
     <div class="container" id="login-container">
       <h1>狭間書房 社員マイページ</h1>
       <form id="loginForm">
@@ -315,5 +305,7 @@ logoutBtn.addEventListener("click", () => {
    <footer>
     <p>© 2025 狭間書房</p>
   </footer>
+  ...
 </body>
 </html>
+
