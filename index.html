@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <title>狭間書房 | 社員マイページ</title>
   <style>
-     body {
+    body {
       background-color: #000;
       color: #f5f5f5;
       font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
+    
     /* ヘッダー */
     header {
       display: flex;
@@ -23,10 +23,12 @@
       background-color: #32a9cd;
       color: #fff;
     }
+    
     .title-wrapper {
       display: flex;
       flex-direction: column;
     }
+    
     header h1 {
       margin: 0;
       font-size: 3em;
@@ -34,6 +36,7 @@
       line-height: 1;
       border: none;
     }
+    
     .subtitle {
       margin: 0;
       padding: 0;
@@ -42,11 +45,13 @@
       text-align: center;
       color: #fff;
     }
+    
     /* 検索 */
     .search {
       display: flex;
       align-items: center;
     }
+    
     .search input {
       padding: 4px;
       border: 2px solid #003366;
@@ -55,9 +60,11 @@
       background-color: #fff;
       color: #003366;
     }
+    
     .search input::placeholder {
       color: #003366aa;
     }
+    
     .search button {
       padding: 4px 6px;
       margin-left: 4px;
@@ -67,38 +74,47 @@
       color: #fff;
       cursor: pointer;
     }
+    
     .search button:hover {
       background-color: #001f33;
     }
-/* ナビゲーション */
+    
+    /* ナビゲーション */
     nav {
       text-align: center;
       padding: 1em 0;
       background-color: #f0f0f0;
     }
+    
     nav a {
       color: #003366;
       margin: 0 1em;
       text-decoration: none;
       font-weight: bold;
     }
+    
     nav a:hover {
       color: #32a9cd;
     }
-/* コンテンツ */
-    .content {
-      max-width: 1000px;
-      margin: 2em auto;
-      padding: 0 1em;
+    
+    /* コンテンツエリア */
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2em 1em;
     }
+    
     /* フッター */
     footer {
       background-color: #32a9cd;
       color: #ffffff;
       text-align: center;
       padding: 1em;
-      margin-top: 3em;
+      margin-top: auto;
     }
+    
     .container {
       background-color: #111;
       padding: 2em 3em;
@@ -106,7 +122,9 @@
       box-shadow: 0 0 20px rgba(255,255,255,0.1);
       max-width: 500px;
       width: 100%;
+      position: relative;
     }
+    
     h1 {
       text-align: center;
       font-size: 1.8em;
@@ -114,12 +132,14 @@
       letter-spacing: 0.2em;
       color: #fff;
     }
+    
     label {
       display: block;
       margin-bottom: 0.5em;
       font-size: 0.9em;
       color: #ccc;
     }
+    
     input {
       width: 100%;
       padding: 0.6em;
@@ -128,11 +148,14 @@
       border: 1px solid #666;
       color: #fff;
       font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
+      box-sizing: border-box;
     }
+    
     input:focus {
       outline: none;
       border-color: #aaa;
     }
+    
     button {
       width: 100%;
       padding: 0.8em;
@@ -144,42 +167,50 @@
       font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
       transition: all 0.3s ease;
     }
+    
     button:hover {
       background-color: #111;
       border-color: #fff;
     }
+    
     .note {
       margin-top: 1em;
       font-size: 0.8em;
       color: #777;
       text-align: center;
     }
+    
     .error {
       color: #ff6666;
       text-align: center;
       margin-bottom: 1em;
     }
+    
     .profile {
       line-height: 1.8;
     }
+    
     .profile h2 {
       text-align: center;
       margin-bottom: 1em;
     }
+    
     .logout-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: none;
-  border: none;
-  color: #f5f5f5;
-  font-size: 1.5em;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-.logout-btn:hover {
-  color: #ff6666;
-}
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: #f5f5f5;
+      font-size: 1.5em;
+      cursor: pointer;
+      transition: color 0.3s;
+      width: auto;
+    }
+    
+    .logout-btn:hover {
+      color: #ff6666;
+    }
   </style>
 </head>
 <body>
@@ -201,45 +232,40 @@
     <a href="https://hazamashobo.github.io/main/index.html">ホーム</a>
     <a href="https://hazamashobo.github.io/company/index.html">狭間書房について</a>
     <a href="https://hazamashobo.github.io/books/index.html">刊行物</a>
-    <a href="https://hazamashobo.github.io/contact/index.html"class="active">お問い合わせ</a>
+    <a href="https://hazamashobo.github.io/contact/index.html" class="active">お問い合わせ</a>
   </nav>
-  <div class="container" id="login-container">
-    <h1>狭間書房 社員マイページ</h1>
-    <form id="loginForm">
-      <div class="error" id="error"></div>
-      <label for="code">社員コード</label>
-      <input type="text" id="code" name="code" placeholder="例: HS0001" required>
-<label for="dob">生年月日</label>
-      <input type="date" id="dob" name="dob" required>
-<button type="submit">ログイン</button>
-    </form>
-    <p class="note">※ 本ページは狭間書房社員専用です。</p>
-  </div>
-<div class="container" id="mypage-container" style="display:none;">
-  <button id="logoutBtn" class="logout-btn">×</button>
-  <div class="profile">
-    <h2 id="empName"></h2>
-    <p><strong>社員コード：</strong> <span id="empCode"></span></p>
-    <p><strong>部署：</strong> <span id="empDept"></span></p>
-    <p><strong>役職：</strong> <span id="empRole"></span></p>
-    <p><strong>入社年：</strong> <span id="empYear"></span></p>
-    <p><strong>備考：</strong> <span id="empNote"></span></p>
-  </div>
-</div>
-  <div class="container" id="mypage-container" style="display:none;">
-    <div class="profile">
-      <h2 id="empName"></h2>
-      <p><strong>社員コード：</strong> <span id="empCode"></span></p>
-      <p><strong>部署：</strong> <span id="empDept"></span></p>
-      <p><strong>役職：</strong> <span id="empRole"></span></p>
-      <p><strong>入社年：</strong> <span id="empYear"></span></p>
-      <p><strong>メモ：</strong> <span id="empNote"></span></p>
+
+  <div class="main-content">
+    <div class="container" id="login-container">
+      <h1>狭間書房 社員マイページ</h1>
+      <form id="loginForm">
+        <div class="error" id="error"></div>
+        <label for="code">社員コード</label>
+        <input type="text" id="code" name="code" placeholder="例: HS0001" required>
+        <label for="dob">生年月日</label>
+        <input type="date" id="dob" name="dob" required>
+        <button type="submit">ログイン</button>
+      </form>
+      <p class="note">※ 本ページは狭間書房社員専用です。</p>
+    </div>
+
+    <div class="container" id="mypage-container" style="display:none;">
+      <button id="logoutBtn" class="logout-btn">×</button>
+      <div class="profile">
+        <h2 id="empName"></h2>
+        <p><strong>社員コード：</strong> <span id="empCode"></span></p>
+        <p><strong>部署：</strong> <span id="empDept"></span></p>
+        <p><strong>役職：</strong> <span id="empRole"></span></p>
+        <p><strong>入社年：</strong> <span id="empYear"></span></p>
+        <p><strong>備考：</strong> <span id="empNote"></span></p>
+      </div>
     </div>
   </div>
+
 <script>
     // 社員名簿データ（13人分）
     const employees = [
-      { code: "HS0001", dob: "1965-12-25", name: "桐須 瑛人", dept: "編集部", role: "編集長", year: "S62.4.1", note: '<a href="https://hazamashobo.github.io/kiroku/index.html">2025.08.17の日記</a>'},
+      { code: "HS0001", dob: "1965-12-25", name: "桜頭 瑛人", dept: "編集部", role: "編集長", year: "S62.4.1", note: '<a href="https://hazamashobo.github.io/kiroku/index.html">2025.08.17の日記</a>'},
       { code: "HS0002", dob: "1970-05-03", name: "薮 翔子", dept: "編集部", role: "副編集長", year: "H4.4.1", note: "更新はありません" },
       { code: "HS0003", dob: "1979-11-30", name: "鳥羽 舞", dept: "編集部", role: "会計", year: "H13.4.1", note: "更新はありません" },
       { code: "HS0004", dob: "1985-06-29", name: "立城 純平", dept: "編集部", role: "", year: "H19.4.1", note: "更新はありません" },
@@ -251,7 +277,7 @@
       { code: "HS0010", dob: "1998-10-28", name: "湯田 伊織", dept: "編集部", role: "", year: "R5.4.1", note: '<a href="https://hazamashobo.github.io/plan/index.html">計画進行表</a>'},
       { code: "HS0011", dob: "2000-12-27", name: "赤羽 義人", dept: "編集部", role: "", year: "R5.4.1", note: '<a href="https://hazamashobo.github.io/irregular/index.html">Gateway of liminaiイレギュラー対応</a>'},
       { code: "HS0012", dob: "2001-10-28", name: "下野 凛", dept: "編集部", role: "", year: "R6.4.1", note: "更新はありません" },
-      { code: "HS0013", dob: "2002-06-19", name: "堀北 大樹", dept: "編集部", role: "", year: "R7.4.1", note: "更新はありません" }
+      { code: "HS0013", dob: "2002-06-19", name: "堂北 大樹", dept: "編集部", role: "", year: "R7.4.1", note: "更新はありません" }
     ];
 
     const loginForm = document.getElementById("loginForm");
@@ -279,9 +305,9 @@ logoutBtn.addEventListener("click", () => {
         document.getElementById("empName").textContent = employee.name;
         document.getElementById("empCode").textContent = employee.code;
         document.getElementById("empDept").textContent = employee.dept;
-        document.getElementById("empRole").textContent = employee.role || "―";
+        document.getElementById("empRole").textContent = employee.role || "—";
         document.getElementById("empYear").textContent = employee.year;
-        document.getElementById("empNote").innerHTML = employee.note || "―";
+        document.getElementById("empNote").innerHTML = employee.note || "—";
 
         loginContainer.style.display = "none";
         mypageContainer.style.display = "block";
