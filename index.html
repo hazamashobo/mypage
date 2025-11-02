@@ -49,19 +49,22 @@
       align-items: center;
     }
     .search input {
-      padding: 6px 8px;
+      padding: 0 8px;
       border: 2px solid #003366;
       border-radius: 4px;
       width: 180px;
       background-color: #fff;
       color: #003366;
       font-size: 0.9em;
+      height: 32px; /* 任意で調整可能 */
+      line-height: 32px;
+     box-sizing: border-box;
     }
     .search input::placeholder {
       color: #003366aa;
     }
     .search button {
-      padding: 6px 10px;
+      padding: 0 10px;
       margin-left: 6px;
       border-radius: 4px;
       border: none;
@@ -69,6 +72,9 @@
       color: #fff;
       cursor: pointer;
       font-size: 0.9em;
+      height: 32px; /* 任意で調整可能 */
+      line-height: 32px;
+      box-sizing: border-box;
     }
     .search button:hover {
       background-color: #001f33;
