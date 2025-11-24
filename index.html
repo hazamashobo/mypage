@@ -18,7 +18,7 @@
     header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       padding: 1em 2em;
       background-color: #666;
       color: #fff;
@@ -46,33 +46,34 @@
     /* 検索 */
     .search form {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      gap: 6px;
+      margin-top: 0.5em;
     }
     .search input {
-      padding: 0 8px;
+      padding: 4px;
       border: 2px solid #003366;
       border-radius: 4px;
-      width: 180px;
+      width: 150px;
       background-color: #fff;
       color: #003366;
       font-size: 0.9em;
-      height: 32px; /* 任意で調整可能 */
+      height: 32px;
       line-height: 32px;
-     box-sizing: border-box;
+      box-sizing: border-box;
     }
     .search input::placeholder {
       color: #003366aa;
     }
     .search button {
       padding: 0 10px;
-      margin-left: 6px;
       border-radius: 4px;
       border: none;
       background-color: #003366;
       color: #fff;
       cursor: pointer;
       font-size: 0.9em;
-      height: 32px; /* 任意で調整可能 */
+      height: 32px;
       line-height: 32px;
       box-sizing: border-box;
     }
@@ -214,7 +215,7 @@
     </div>
     <div class="search">
       <form action="https://hazamashobo.github.io/result/" method="get">
-        <input type="text" id="searchInput" name="q" placeholder="ずれが直らない→">
+        <input type="text" id="searchInput" name="q" placeholder="キーワード入力">
         <button type="submit">検索</button>
       </form>
     </div>
@@ -315,4 +316,3 @@ logoutBtn.addEventListener("click", () => {
   </footer>
 </body>
 </html>
-
