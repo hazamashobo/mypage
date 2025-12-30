@@ -2,30 +2,53 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>狭間書房 | 社員マイページ</title>
   <style>
-    body {
-      background-color: #000;
-      color: #f5f5f5;
-      font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
+    html, body {
+      height: 100%;
       margin: 0;
-      min-height: 100vh;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
       display: flex;
       flex-direction: column;
+    }
+
+    body {
+      background-color: #111;
+      color: #f5f5f5;
+      font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
+      line-height: 1.8;
     }
 
     /* ヘッダー */
     header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       padding: 1em 2em;
       background-color: #666;
       color: #fff;
+      flex-shrink: 0;
+      gap: 2em;
+      box-sizing: border-box;
+      width: 100%;
     }
     .title-wrapper {
       display: flex;
       flex-direction: column;
+    }
+    .title-wrapper a {
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .title-wrapper a:hover h1 {
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
     }
     header h1 {
       margin: 0;
@@ -33,6 +56,8 @@
       letter-spacing: 0.1em;
       line-height: 1;
       border: none;
+      font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
+      font-weight: 700;
     }
     .subtitle {
       margin: 0;
@@ -44,41 +69,41 @@
     }
 
     /* 検索 */
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
     .search form {
       display: flex;
-      align-items: flex-start;
-      gap: 6px;
-      margin-top: 0.5em;
+      align-items: center;
+      gap: 0.5em;
     }
     .search input {
       padding: 4px;
-      border: 2px solid #003366;
+      border: 2px solid #333;
       border-radius: 4px;
       width: 150px;
       background-color: #fff;
-      color: #003366;
-      font-size: 0.9em;
-      height: 32px;
-      line-height: 32px;
-      box-sizing: border-box;
+      color: #333;
     }
     .search input::placeholder {
-      color: #003366aa;
+      color: #333aa;
     }
     .search button {
-      padding: 0 10px;
+      padding: 4px 6px;
       border-radius: 4px;
       border: none;
-      background-color: #003366;
+      background-color: #333;
       color: #fff;
       cursor: pointer;
-      font-size: 0.9em;
-      height: 32px;
-      line-height: 32px;
-      box-sizing: border-box;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .search button:hover {
-      background-color: #001f33;
+      background-color: #222;
     }
 
     /* ナビゲーション */
@@ -86,46 +111,50 @@
       text-align: center;
       padding: 1em 0;
       background-color: #f0f0f0;
+      flex-shrink: 0;
+      overflow-x: auto;
+      box-sizing: border-box;
+      width: 100%;
     }
     nav a {
       color: #003366;
       margin: 0 1em;
       text-decoration: none;
       font-weight: bold;
+      display: inline-block;
+      white-space: nowrap;
     }
     nav a:hover {
       color: #666;
     }
+    nav a.active {
+      color: #666;
+      border-bottom: 2px solid #666;
+    }
 
-    /* コンテンツエリア */
+    /* メインコンテンツエリア */
     .main-content {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 2em 1em;
-    }
-
-    /* フッター */
-    footer {
-      background-color: #666;
-      color: #ffffff;
-      text-align: center;
-      padding: 1em;
-      margin-top: auto;
+      box-sizing: border-box;
+      width: 100%;
     }
 
     .container {
-      background-color: #111;
+      background-color: #1a1a1a;
       padding: 2em 3em;
       border: 1px solid #444;
       box-shadow: 0 0 20px rgba(255,255,255,0.1);
       max-width: 500px;
       width: 100%;
       position: relative;
+      box-sizing: border-box;
     }
 
-    h1 {
+    .container h1 {
       text-align: center;
       font-size: 1.8em;
       margin-bottom: 1.5em;
@@ -140,7 +169,7 @@
       color: #ccc;
     }
 
-    input {
+    .container input {
       width: 100%;
       padding: 0.6em;
       margin-bottom: 1.2em;
@@ -151,12 +180,12 @@
       box-sizing: border-box;
     }
 
-    input:focus {
+    .container input:focus {
       outline: none;
       border-color: #aaa;
     }
 
-    button {
+    .container button[type="submit"] {
       width: 100%;
       padding: 0.8em;
       background-color: #000;
@@ -167,7 +196,7 @@
       font-family: "Hiragino Mincho ProN", "MS Mincho", serif;
       transition: all 0.3s ease;
     }
-    button:hover {
+    .container button[type="submit"]:hover {
       background-color: #111;
       border-color: #fff;
     }
@@ -182,6 +211,7 @@
       color: #ff6666;
       text-align: center;
       margin-bottom: 1em;
+      font-size: 0.9em;
     }
     .profile {
       line-height: 1.8;
@@ -189,6 +219,18 @@
     .profile h2 {
       text-align: center;
       margin-bottom: 1em;
+      font-size: 1.5em;
+    }
+    .profile p {
+      margin: 0.8em 0;
+      word-wrap: break-word;
+    }
+    .profile a {
+      color: #8ab4f8;
+      text-decoration: none;
+    }
+    .profile a:hover {
+      text-decoration: underline;
     }
     .logout-btn {
       position: absolute;
@@ -201,17 +243,171 @@
       cursor: pointer;
       transition: color 0.3s;
       width: auto;
+      padding: 0;
     }
     .logout-btn:hover {
       color: #ff6666;
+    }
+
+    /* フッター */
+    footer {
+      background-color: #666;
+      color: #ffffff;
+      text-align: center;
+      padding: 1em;
+      flex-shrink: 0;
+      margin-top: auto;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      header {
+        padding: 1em;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+        gap: 1em;
+      }
+
+      header h1 {
+        font-size: 2em;
+      }
+
+      .title-wrapper {
+        width: 100%;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .search form {
+        width: 100%;
+        display: flex;
+      }
+
+      .search input {
+        width: 100%;
+        flex: 1;
+      }
+
+      nav a {
+        margin: 0 0.5em;
+        font-size: 0.9em;
+      }
+
+      .main-content {
+        padding: 1.5em 1em;
+      }
+
+      .container {
+        padding: 1.5em 2em;
+        max-width: 100%;
+      }
+
+      .container h1 {
+        font-size: 1.5em;
+        margin-bottom: 1.2em;
+      }
+
+      .profile h2 {
+        font-size: 1.3em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+
+      header h1 {
+        font-size: 1.5em;
+      }
+
+      .subtitle {
+        font-size: 0.9em;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .search input {
+        width: 100%;
+        padding: 0.5em;
+      }
+
+      .search button {
+        padding: 0.5em 0.8em;
+        font-size: 0.9em;
+      }
+
+      nav a {
+        margin: 0 0.3em;
+        font-size: 0.8em;
+      }
+
+      .main-content {
+        padding: 1em 0.8em;
+      }
+
+      .container {
+        padding: 1.2em 1.5em;
+      }
+
+      .container h1 {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+        letter-spacing: 0.1em;
+      }
+
+      label {
+        font-size: 0.85em;
+      }
+
+      .container input {
+        padding: 0.5em;
+        margin-bottom: 1em;
+        font-size: 0.9em;
+      }
+
+      .container button[type="submit"] {
+        padding: 0.7em;
+        font-size: 0.95em;
+      }
+
+      .note {
+        font-size: 0.75em;
+      }
+
+      .profile h2 {
+        font-size: 1.2em;
+        margin-bottom: 0.8em;
+      }
+
+      .profile p {
+        font-size: 0.9em;
+        margin: 0.6em 0;
+      }
+
+      .logout-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 1.3em;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="title-wrapper">
-      <h1>狭間書房</h1>
-      <p class="subtitle">Hazama Publishing</p>
+      <a href="https://hazamashobo.github.io/main/index.html">
+        <h1>狭間書房</h1>
+        <p class="subtitle">Hazama Publishing</p>
+      </a>
     </div>
     <div class="search">
       <form action="https://hazamashobo.github.io/result/" method="get">
@@ -228,7 +424,7 @@
     <a href="https://hazamashobo.github.io/contact/index.html" class="active">お問い合わせ</a>
   </nav>
 
- <div class="main-content">
+  <div class="main-content">
     <div class="container" id="login-container">
       <h1>狭間書房 社員マイページ</h1>
       <form id="loginForm">
@@ -254,6 +450,10 @@
       </div>
     </div>
   </div>
+
+  <footer>
+    <p>© 2025 狭間書房</p>
+  </footer>
 
 <script>
     // 社員名簿データ（13人分）
@@ -281,12 +481,12 @@
     const mypageContainer = document.getElementById("mypage-container");
     const logoutBtn = document.getElementById("logoutBtn");
 
-logoutBtn.addEventListener("click", () => {
-  mypageContainer.style.display = "none";
-  loginContainer.style.display = "block";
-  errorDiv.textContent = "";
-  loginForm.reset(); // 入力欄リセット
-});
+    logoutBtn.addEventListener("click", () => {
+      mypageContainer.style.display = "none";
+      loginContainer.style.display = "block";
+      errorDiv.textContent = "";
+      loginForm.reset();
+    });
 
     loginForm.addEventListener("submit", function(e) {
       e.preventDefault();
@@ -296,7 +496,6 @@ logoutBtn.addEventListener("click", () => {
       const employee = employees.find(emp => emp.code === code && emp.dob === dob);
 
       if (employee) {
-        // マイページに情報を反映
         document.getElementById("empName").textContent = employee.name;
         document.getElementById("empCode").textContent = employee.code;
         document.getElementById("empDept").textContent = employee.dept;
@@ -311,8 +510,5 @@ logoutBtn.addEventListener("click", () => {
       }
     });
   </script>
-   <footer>
-    <p>© 2025 狭間書房</p>
-  </footer>
 </body>
 </html>
